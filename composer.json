@@ -1,0 +1,17 @@
+{
+    "name": "denisparamon/tfs",
+    "description": "TFS",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DenisParamonov"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "slim/slim": "4.*",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1"
+    }
+}
