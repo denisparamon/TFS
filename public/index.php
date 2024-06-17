@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Nyholm\Psr7Server\ServerRequestCreatorInterface;
+use Slim\Views\PhpRenderer;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -24,6 +25,12 @@ $serverRequestCreator = new ServerRequestCreator(
 AppFactory::setResponseFactory($responseFactory);
 AppFactory::setStreamFactory($streamFactory);
 $app = AppFactory::create();
+
+// Добавляем обработчик для маршрута /about
+$app->get('/about', function (Request $request, Response $response, $args) {
+    $phpView = new PhpRenderer('../templates');
+    return $phpView->render($response, 'about.phtml');
+});
 
 // Define the route
 $app->get('/hello/{name}', function (Request $request, Response $response, $args) {
